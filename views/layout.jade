@@ -1,0 +1,61 @@
+doctype html
+html
+  head
+    title= title
+    script(src='/javascripts/auth.js')
+    script(src='/javascripts/output.js')
+    script(src='/javascripts/navigation.js')
+    script(src='/javascripts/sample_json.js')
+    script(src='http://fgnass.github.io/spin.js/spin.min.js')
+
+    script(src='/javascripts/endpoints/company/core.company.add.js')
+    script(src='/javascripts/endpoints/company/core.company.delete.js')
+    script(src='/javascripts/endpoints/company/core.company.get.js')
+    script(src='/javascripts/endpoints/company/core.company.list.js')
+    script(src='/javascripts/endpoints/company/core.company.patch.js')
+    script(src='/javascripts/endpoints/company/core.company.lookup.js')
+    script(src='/javascripts/endpoints/company/core.company.move.js')
+    script(src='/javascripts/endpoints/company/core.company.regenerateField.js')
+
+    script(src='/javascripts/endpoints/display/core.display.add.js')
+    script(src='/javascripts/endpoints/display/core.display.delete.js')
+    script(src='/javascripts/endpoints/display/core.display.get.js')
+    script(src='/javascripts/endpoints/display/core.display.list.js')
+    script(src='/javascripts/endpoints/display/core.display.patch.js')
+    script(src='/javascripts/endpoints/display/core.display.reboot.js')
+    script(src='/javascripts/endpoints/display/core.display.restart.js')
+
+    script(src='/javascripts/endpoints/schedule/core.schedule.add.js')
+    script(src='/javascripts/endpoints/schedule/core.schedule.delete.js')
+    script(src='/javascripts/endpoints/schedule/core.schedule.get.js')
+    script(src='/javascripts/endpoints/schedule/core.schedule.list.js')
+    script(src='/javascripts/endpoints/schedule/core.schedule.patch.js')
+
+    script(src='/javascripts/endpoints/user/core.user.add.js')
+    script(src='/javascripts/endpoints/user/core.user.delete.js')
+    script(src='/javascripts/endpoints/user/core.user.get.js')
+    script(src='/javascripts/endpoints/user/core.user.list.js')
+    script(src='/javascripts/endpoints/user/core.user.patch.js')
+
+    script(src='/javascripts/endpoints/presentation/core.presentation.add.js')
+    script(src='/javascripts/endpoints/presentation/core.presentation.delete.js')
+    script(src='/javascripts/endpoints/presentation/core.presentation.get.js')
+    script(src='/javascripts/endpoints/presentation/core.presentation.list.js')
+    script(src='/javascripts/endpoints/presentation/core.presentation.patch.js')
+    script(src='/javascripts/endpoints/presentation/core.presentation.publish.js')
+    script(src='/javascripts/endpoints/presentation/core.presentation.restore.js')
+
+    script(src='/javascripts/endpoints/systemmessage/core.systemmessage.list.js')
+    script(src='/javascripts/endpoints/country/core.country.list.js')
+    script(src='/javascripts/endpoints/template/core.template.list.js')
+    script(src='/javascripts/endpoints/timezone/core.timezone.list.js')
+
+    script(src='/javascripts/init.js')
+
+    script(src='https://apis.google.com/js/client.js?onload=init')
+
+    link(rel='stylesheet', href='/stylesheets/rise.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+  body
+    block content

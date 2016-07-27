@@ -1,0 +1,64 @@
+pre {
+    /*outline: 1px solid #ccc;*/
+    /*adding: 5px;
+    margin: 5px;*/
+    border: none;
+}
+
+.string {
+    color: green;
+}
+
+.number {
+    color: darkorange;
+}
+
+.boolean {
+    color: blue;
+}
+
+.null {
+    color: magenta;
+}
+
+.key {
+    color: red;
+}
+
+.breadcrumb {
+    padding: 0px;
+}
+
+a[disabled] {
+    pointer-events: none;
+}
+
+.content-body {
+    margin-left: 15px;
+}
+
+/*#signinText {
+    font-size: 14px;
+}
+*/
+.callSection, .responsePanel {
+    display: none;
+}
+
+#signoutButton {
+    visibility: hidden;
+    display: none;
+}
+
+.dataTextArea {
+    width: 22em;
+    height: 22em;
+}
+
+.fa-blue-custom::before {
+    color: #2d60ad;
+}
+a:hover .fa-blue-custom::before {
+    color: #1d3e70;
+}
+

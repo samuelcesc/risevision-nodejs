@@ -1,0 +1,1587 @@
+extends layout
+
+block content
+    #content.row
+      .col-md-12
+        .row
+          .col-md-12.content-header
+            // Navbar on the header of the console application
+            nav.navbar.navbar-default(role='navigation')
+              .container-fluid
+                .navbar-header
+                  span.navbar-brand
+                    img(src='http://s3.amazonaws.com/rise-common/images/logo-small.png')
+                    |    API Console
+                  span#signinText.navbar-text Authorize requests using OAuth 2.0:
+                button#signinButton.btn.btn-primary.btn-fixed-width.navbar-btn(type='button')
+                  | Sign in 
+                  i.fa.fa-white.fa-sign-in.icon-right
+                a#signoutButton.navbar-nav(href='javascript:void(0);')
+                  span Sign Out
+                  i.fa.fa-blue-custom.fa-sign-out
+                a.btn.btn-rv-help.btn-fixed-width.navbar-right(type='button', href='https://github.com/Rise-Vision/core-api', target='_blank')
+                  | Contribute 
+                  i.fa.fa-github.fa-lg
+        .row
+          .col-md-10.col-md-offset-1
+            // Table with all functions
+            #listOfFunctions
+              div
+                ol.breadcrumb
+                  li.active Core API
+              table.table.table-condensed
+                tbody
+                  // ------------------------------ Company calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','addCompanySection');") core.company.add
+                    td
+                      span.description Add a company
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','deleteCompanySection');") core.company.delete
+                    td
+                      span.description Delete a company
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','getCompanySection');") core.company.get
+                    td
+                      span.description Gets the information about a company
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listCompanySection');") core.company.list
+                    td
+                      span.description List the companies under a head company
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','lookupCompanySection');") core.company.lookup
+                    td
+                      span.description Lookup a company
+                    td
+                      span.label.label-default New
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','moveCompanySection');") core.company.move
+                    td
+                      span.description Move a company
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','patchCompanySection');") core.company.patch
+                    td
+                      span.description Patch a company
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','regenerateFieldCompanySection');") core.company.regenerateField
+                    td
+                      span.description Regenerate field of a company
+                    td
+                  // ------------------------------ Display calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','addDisplaySection');") core.display.add
+                    td
+                      span.description Add a display
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','deleteDisplaySection');") core.display.delete
+                    td
+                      span.description Delete a display
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','getDisplaySection');") core.display.get
+                    td
+                      span.description Get a display
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listDisplaySection');") core.display.list
+                    td
+                      span.description List displays
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','patchDisplaySection');") core.display.patch
+                    td
+                      span.description Patch a display
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','rebootDisplaySection');") core.display.reboot
+                    td
+                      span.description Reboot a display
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','restartDisplaySection');") core.display.restart
+                    td
+                      span.description Restart a display
+                    td
+                  // ------------------------------ Schedule calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','addScheduleSection');") core.schedule.add
+                    td
+                      span.description Add a schedule
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','deleteScheduleSection');") core.schedule.delete
+                    td
+                      span.description Delete a schedule
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','getScheduleSection');") core.schedule.get
+                    td
+                      span.description Get a schedule
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listScheduleSection');") core.schedule.list
+                    td
+                      span.description List schedules
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','patchScheduleSection');") core.schedule.patch
+                    td
+                      span.description Patch a schedule
+                    td
+                  // ------------------------------ Systemmessage calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listSystemmessageSection');") core.systemmessage.list
+                    td
+                      span.description List Systemmessage
+                    td
+                  // ------------------------------ User calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','addUserSection');") core.user.add
+                    td
+                      span.description Add a user
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','deleteUserSection');") core.user.delete
+                    td
+                      span.description Delete a user
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','getUserSection');") core.user.get
+                    td
+                      span.description Get a user
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listUserSection');") core.user.list
+                    td
+                      span.description List users
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','patchUserSection');") core.user.patch
+                    td
+                      span.description Patch a user
+                    td
+                  // ------------------------------ Country calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listCountrySection');") core.country.list
+                    td
+                      span.description List of countries
+                    td
+                  // ------------------------------ Presentation calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','addPresentationSection');") core.presentation.add
+                    td
+                      span.description Add a presentation
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','deletePresentationSection');") core.presentation.delete
+                    td
+                      span.description Delete a presentation
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','getPresentationSection');") core.presentation.get
+                    td
+                      span.description Get a presentation
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listPresentationSection');") core.presentation.list
+                    td
+                      span.description List presentations
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','patchPresentationSection');") core.presentation.patch
+                    td
+                      span.description Patch a presentation
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','publishPresentationSection');") core.presentation.publish
+                    td
+                      span.description Publish a presentation
+                    td
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','restorePresentationSection');") core.presentation.restore
+                    td
+                      span.description Restore a presentation
+                    td
+                  // ------------------------------ Country calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listTemplateSection');") core.template.list
+                    td
+                      span.description List of templates
+                    td
+                  // ------------------------------ Country calls -------------------------------------
+                  tr
+                    td
+                      a(href="javascript:navigate('listOfFunctions','listTimezoneSection');") core.timezone.list
+                    td
+                      span.description List of timezones
+                    td
+            // html elements for core.company.add
+            #addCompanySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('addCompanySection','listOfFunctions');") Core API
+                  li.active core.company.add
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='addCompany_data') Data
+                    .col-sm-10
+                      textarea#addCompany_data.dataTextArea
+                      span.description Json object with pair key value of the company's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='addCompany_parentId') Parent Id
+                    .col-sm-10
+                      input#addCompany_parentId(placeholder='')
+                      span.description The Id of the Parent Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#addCompany_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#addCompany.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #addCompanyResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #addCompanyResultArea.panel-body.result
+            // html elements for core.company.delete
+            #deleteCompanySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('deleteCompanySection','listOfFunctions');") Core API
+                  li.active core.company.delete
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='deleteCompany_id') Id
+                    .col-sm-10
+                      input#deleteCompany_id(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#deleteCompany_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#deleteCompany.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #deleteCompanyResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #deleteCompanyResultArea.panel-body.result
+            // html elements for core.company.get
+            #getCompanySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('getCompanySection','listOfFunctions');") Core API
+                  li.active core.company.get
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='getCompany_id') Id
+                    .col-sm-10
+                      input#getCompany_id(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#getCompany_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#getCompany.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #getCompanyResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #getCompanyResultArea.panel-body.result
+            // html elements for core.company.list !
+            #listCompanySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listCompanySection','listOfFunctions');") Core API
+                  li.active core.company.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='listCompany_companyId') Company Id
+                    .col-sm-10
+                      input#listCompany_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listCompany_count') Count
+                    .col-sm-10
+                      input#listCompany_count(placeholder='')
+                      span.description Max number of results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listCompany_cursor') Cursor
+                    .col-sm-10
+                      input#listCompany_cursor(placeholder='')
+                      span.description ?? (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listCompany_search') Search
+                    .col-sm-10
+                      input#listCompany_search(placeholder='')
+                      span.description Search query (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listCompany_sort') Sort
+                    .col-sm-10
+                      input#listCompany_sort(placeholder='')
+                      span.description Field and direction to sort the results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listCompany_fields') Fields
+                    .col-sm-10
+                      input#listCompany_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listCompany.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+                #listCompanyResult
+                  .row.responsePanel
+                    .col-md-12
+                      .panel.panel-default
+                        .panel-heading Response
+                        #listCompanyResultArea.panel-body.result
+            // html elements for core.company.lookup
+            #lookupCompanySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('lookupCompanySection','listOfFunctions');") Core API
+                  li.active core.company.lookup
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='lookupCompany_authKey') authKey
+                    .col-sm-10
+                      input#lookupCompany_authKey(placeholder='')
+                      span.description The authkey of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#lookupCompany_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#lookupCompany.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #lookupCompanyResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #lookupCompanyResultArea.panel-body.result
+            // html elements for core.company.move
+            #moveCompanySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('moveCompanySection','listOfFunctions');") Core API
+                  li.active core.company.move
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='moveCompany_authKey') authKey
+                    .col-sm-10
+                      input#moveCompany_authKey(placeholder='')
+                      span.description The authkey of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#moveCompany_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#moveCompany.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #moveCompanyResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #moveCompanyResultArea.panel-body.result
+            // html elements for core.company.patch
+            #patchCompanySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('patchCompanySection','listOfFunctions');") Core API
+                  li.active core.company.patch
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='patchCompany_data') Data
+                    .col-sm-10
+                      textarea#patchCompany_data.dataTextArea
+                      span.description Json object with pair key value of the company's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='patchCompany_id') Id
+                    .col-sm-10
+                      input#patchCompany_id(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#patchCompany_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#patchCompany.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #patchCompanyResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #patchCompanyResultArea.panel-body.result
+            // html elements for core.company.regenerateField
+            #regenerateFieldCompanySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('regenerateFieldCompanySection','listOfFunctions');") Core API
+                  li.active core.company.regenerateField
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='regenerateFieldCompany_fieldName') fieldName
+                    .col-sm-10
+                      input#regenerateFieldCompany_fieldName(placeholder='')
+                      span.description The field name of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='regenerateFieldCompany_id') Id
+                    .col-sm-10
+                      input#regenerateFieldCompany_id(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#regenerateFieldCompany_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#regenerateFieldCompany.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #regenerateFieldCompanyResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #regenerateFieldCompanyResultArea.panel-body.result
+            // html elements for core.schedule.add
+            #addDisplaySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('addDisplaySection','listOfFunctions');") Core API
+                  li.active core.display.add
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='addDisplay_data') Data
+                    .col-sm-10
+                      textarea#addDisplay_data.dataTextArea
+                      span.description Json object with pair key value of the display's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='addDisplay_companyId') Company Id
+                    .col-sm-10
+                      input#addDisplay_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#addDisplay_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#addDisplay.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #addDisplayResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #addDisplayResultArea.panel-body.result
+            // html elements for core.display.delete
+            #deleteDisplaySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('deleteDisplaySection','listOfFunctions');") Core API
+                  li.active core.display.delete
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='deleteDisplay_id') Id
+                    .col-sm-10
+                      input#deleteDisplay_id(placeholder='')
+                      span.description The Id of the Display (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#deleteDisplay_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#deleteDisplay.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #deleteDisplayResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #deleteDisplayResultArea.panel-body.result
+            // html elements for core.display.get
+            #getDisplaySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('getDisplaySection','listOfFunctions');") Core API
+                  li.active core.display.get
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='getDisplay_id') Id
+                    .col-sm-10
+                      input#getDisplay_id(placeholder='')
+                      span.description The Id of the Display (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#getDisplay_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#getDisplay.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #getDisplayResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #getDisplayResultArea.panel-body.result
+            // html elements for core.display.list !
+            #listDisplaySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listDisplaySection','listOfFunctions');") Core API
+                  li.active core.display.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='listDisplay_companyId') Company Id
+                    .col-sm-10
+                      input#listDisplay_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listDisplay_count') Count
+                    .col-sm-10
+                      input#listDisplay_count(placeholder='')
+                      span.description Max number of results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listDisplay_cursor') Cursor
+                    .col-sm-10
+                      input#listDisplay_cursor(placeholder='')
+                      span.description ?? (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listDisplay_search') Search
+                    .col-sm-10
+                      input#listDisplay_search(placeholder='')
+                      span.description Search query (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listDisplay_sort') Sort
+                    .col-sm-10
+                      input#listDisplay_sort(placeholder='')
+                      span.description Field and direction to sort the results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listDisplay_fields') Fields
+                    .col-sm-10
+                      input#listDisplay_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listDisplay.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+                #listDisplayResult
+                  .row.responsePanel
+                    .col-md-12
+                      .panel.panel-default
+                        .panel-heading Response
+                        #listDisplayResultArea.panel-body.result
+            // html elements for core.display.patch
+            #patchDisplaySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('patchDisplaySection','listOfFunctions');") Core API
+                  li.active core.display.patch
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='patchDisplay_data') Data
+                    .col-sm-10
+                      textarea#patchDisplay_data.dataTextArea
+                      span.description Json object with pair key value of the display's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='patchDisplay_id') Id
+                    .col-sm-10
+                      input#patchDisplay_id(placeholder='')
+                      span.description The Id of the Display (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#patchDisplay_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#patchDisplay.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #patchDisplayResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #patchDisplayResultArea.panel-body.result
+            // html elements for core.display.reboot
+            #rebootDisplaySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('rebootDisplaySection','listOfFunctions');") Core API
+                  li.active core.display.reboot
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='rebootDisplay_id') Id
+                    .col-sm-10
+                      input#rebootDisplay_id(placeholder='')
+                      span.description The Id of the Display (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#rebootDisplay_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#rebootDisplay.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #rebootDisplayResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #rebootDisplayResultArea.panel-body.result
+            // html elements for core.display.restart
+            #restartDisplaySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('restartDisplaySection','listOfFunctions');") Core API
+                  li.active core.display.restart
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='restartDisplay_id') Id
+                    .col-sm-10
+                      input#restartDisplay_id(placeholder='')
+                      span.description The Id of the Display (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#restartDisplay_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#restartDisplay.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #restartDisplayResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #restartDisplayResultArea.panel-body.result
+            // html elements for core.schedule.add
+            #addScheduleSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('addScheduleSection','listOfFunctions');") Core API
+                  li.active core.schedule.add
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='addSchedule_data') Data
+                    .col-sm-10
+                      textarea#addSchedule_data.dataTextArea
+                      span.description Json object with pair key value of the company's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='addSchedule_companyId') Company Id
+                    .col-sm-10
+                      input#addSchedule_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#addSchedule_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#addSchedule.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #addScheduleResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #addScheduleResultArea.panel-body.result
+            // html elements for core.schedule.delete
+            #deleteScheduleSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('deleteScheduleSection','listOfFunctions');") Core API
+                  li.active core.schedule.delete
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='deleteSchedule_id') Id
+                    .col-sm-10
+                      input#deleteSchedule_id(placeholder='')
+                      span.description The Id of the Schedule (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#deleteSchedule_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#deleteSchedule.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #deleteScheduleResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #deleteScheduleResultArea.panel-body.result
+            // html elements for core.schedule.get
+            #getScheduleSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('getScheduleSection','listOfFunctions');") Core API
+                  li.active core.schedule.get
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='getSchedule_id') Id
+                    .col-sm-10
+                      input#getSchedule_id(placeholder='')
+                      span.description The Id of the Schedule (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#getSchedule_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#getSchedule.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #getScheduleResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #getScheduleResultArea.panel-body.result
+            // html elements for core.schedule.list !
+            #listScheduleSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listScheduleSection','listOfFunctions');") Core API
+                  li.active core.schedule.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='listSchedule_companyId') Company Id
+                    .col-sm-10
+                      input#listSchedule_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listSchedule_count') Count
+                    .col-sm-10
+                      input#listSchedule_count(placeholder='')
+                      span.description Max number of results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listSchedule_cursor') Cursor
+                    .col-sm-10
+                      input#listSchedule_cursor(placeholder='')
+                      span.description ?? (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listSchedule_search') Search
+                    .col-sm-10
+                      input#listSchedule_search(placeholder='')
+                      span.description Search query (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listSchedule_sort') Sort
+                    .col-sm-10
+                      input#listSchedule_sort(placeholder='')
+                      span.description Field and direction to sort the results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listSchedule_fields') Fields
+                    .col-sm-10
+                      input#listSchedule_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listSchedule.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+                #listScheduleResult
+                  .row.responsePanel
+                    .col-md-12
+                      .panel.panel-default
+                        .panel-heading Response
+                        #listScheduleResultArea.panel-body.result
+            // html elements for core.schedule.patch
+            #patchScheduleSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('patchScheduleSection','listOfFunctions');") Core API
+                  li.active core.schedule.patch
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='patchSchedule_data') Data
+                    .col-sm-10
+                      textarea#patchSchedule_data.dataTextArea
+                      span.description Json object with pair key value of the company's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='patchSchedule_id') Id
+                    .col-sm-10
+                      input#patchSchedule_id(placeholder='')
+                      span.description The Id of the Schedule (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#patchSchedule_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#patchSchedule.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #patchScheduleResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #patchScheduleResultArea.panel-body.result
+            // html elements for core.systemmessage.list !
+            #listSystemmessageSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listSystemmessageSection','listOfFunctions');") Core API
+                  li.active core.systemmessage.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='listSystemmessage_companyId') Company Id
+                    .col-sm-10
+                      input#listSystemmessage_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listSystemmessage_fields') Fields
+                    .col-sm-10
+                      input#listSystemmessage_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listSystemmessage.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+                #listSystemmessageResult
+                  .row.responsePanel
+                    .col-md-12
+                      .panel.panel-default
+                        .panel-heading Response
+                        #listSystemmessageResultArea.panel-body.result
+            // html elements for core.user.add
+            #addUserSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('addUserSection','listOfFunctions');") Core API
+                  li.active core.user.add
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='addUser_data') Data
+                    .col-sm-10
+                      textarea#addUser_data.dataTextArea
+                      span.description Json object with pair key value of the company's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='addUser_companyId') Company Id
+                    .col-sm-10
+                      input#addUser_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='addUser_username') Username
+                    .col-sm-10
+                      input#addUser_username(placeholder='')
+                      span.description The Username of the User (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#addUser_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#addUser.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #addUserResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #addUserResultArea.panel-body.result
+            // html elements for core.user.delete
+            #deleteUserSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('deleteUserSection','listOfFunctions');") Core API
+                  li.active core.user.delete
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='deleteUser_username') Username
+                    .col-sm-10
+                      input#deleteUser_username(placeholder='')
+                      span.description The Username of the User (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#deleteUser_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#deleteUser.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #deleteUserResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #deleteUserResultArea.panel-body.result
+            // html elements for core.user.get
+            #getUserSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('getUserSection','listOfFunctions');") Core API
+                  li.active core.user.get
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='getUser_username') Username
+                    .col-sm-10
+                      input#getUser_username(placeholder='')
+                      span.description The Username of the User (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#getUser_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#getUser.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #getUserResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #getUserResultArea.panel-body.result
+            // html elements for core.user.list !
+            #listUserSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listUserSection','listOfFunctions');") Core API
+                  li.active core.user.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='listUser_companyId') Company Id
+                    .col-sm-10
+                      input#listUser_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listUser_count') Count
+                    .col-sm-10
+                      input#listUser_count(placeholder='')
+                      span.description Max number of results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listUser_cursor') Cursor
+                    .col-sm-10
+                      input#listUser_cursor(placeholder='')
+                      span.description ?? (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listUser_search') Search
+                    .col-sm-10
+                      input#listUser_search(placeholder='')
+                      span.description Search query (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listUser_sort') Sort
+                    .col-sm-10
+                      input#listUser_sort(placeholder='')
+                      span.description Field and direction to sort the results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listUser_fields') Fields
+                    .col-sm-10
+                      input#listUser_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listUser.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+                #listUserResult
+                  .row.responsePanel
+                    .col-md-12
+                      .panel.panel-default
+                        .panel-heading Response
+                        #listUserResultArea.panel-body.result
+            // html elements for core.user.patch
+            #patchUserSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('patchUserSection','listOfFunctions');") Core API
+                  li.active core.user.patch
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='patchUser_data') Data
+                    .col-sm-10
+                      textarea#patchUser_data.dataTextArea
+                      span.description Json object with pair key value of the company's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='patchUser_username') Username
+                    .col-sm-10
+                      input#patchUser_username(placeholder='')
+                      span.description The Username of the User (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#patchUser_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#patchUser.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                             Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #patchUserResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #patchUserResultArea.panel-body.result
+            // html elements for core.country.list
+            #listCountrySection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listCountrySection','listOfFunctions');") Core API
+                  li.active core.country.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#listCountry_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listCountry.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #listCountryResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #listCountryResultArea.panel-body.result
+            // html elements for core.presentation.add
+            #addPresentationSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('addPresentationSection','listOfFunctions');") Core API
+                  li.active core.presentation.add
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='addPresentation_data') Data
+                    .col-sm-10
+                      textarea#addPresentation_data.dataTextArea
+                      span.description Json object with pair key value of the company's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='addPresentation_companyId') Company Id
+                    .col-sm-10
+                      input#addPresentation_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#addPresentation_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#addPresentation.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #addPresentationResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #addPresentationResultArea.panel-body.result
+            // html elements for core.presentation.delete
+            #deletePresentationSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('deletePresentationSection','listOfFunctions');") Core API
+                  li.active core.presentation.delete
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='deletePresentation_id') Id
+                    .col-sm-10
+                      input#deletePresentation_id(placeholder='')
+                      span.description The Id of the Presentation (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#deletePresentation_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#deletePresentation.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #deletePresentationResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #deletePresentationResultArea.panel-body.result
+            // html elements for core.presentation.get
+            #getPresentationSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('getPresentationSection','listOfFunctions');") Core API
+                  li.active core.presentation.get
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='getPresentation_id') Id
+                    .col-sm-10
+                      input#getPresentation_id(placeholder='')
+                      span.description The Id of the Presentation (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='getPresentation_companyId') Company Id
+                    .col-sm-10
+                      input#getPresentation_companyId(placeholder='')
+                      span.description Unique Company Id (String) - Optional
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#getPresentation_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#getPresentation.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #getPresentationResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #getPresentationResultArea.panel-body.result
+            // html elements for core.presentation.list !
+            #listPresentationSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listPresentationSection','listOfFunctions');") Core API
+                  li.active core.presentation.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='listPresentation_companyId') Company Id
+                    .col-sm-10
+                      input#listPresentation_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listPresentation_count') Count
+                    .col-sm-10
+                      input#listPresentation_count(placeholder='')
+                      span.description Max number of results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listPresentation_cursor') Cursor
+                    .col-sm-10
+                      input#listPresentation_cursor(placeholder='')
+                      span.description ?? (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listPresentation_search') Search
+                    .col-sm-10
+                      input#listPresentation_search(placeholder='')
+                      span.description Search query (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listPresentation_sort') Sort
+                    .col-sm-10
+                      input#listPresentation_sort(placeholder='')
+                      span.description Field and direction to sort the results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listPresentation_fields') Fields
+                    .col-sm-10
+                      input#listPresentation_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listPresentation.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+                #listPresentationResult
+                  .row.responsePanel
+                    .col-md-12
+                      .panel.panel-default
+                        .panel-heading Response
+                        #listPresentationResultArea.panel-body.result
+            // html elements for core.presentation.patch
+            #patchPresentationSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('patchPresentationSection','listOfFunctions');") Core API
+                  li.active core.presentation.patch
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='patchPresentation_data') Data
+                    .col-sm-10
+                      textarea#patchPresentation_data.dataTextArea
+                      span.description Json object with pair key value of the company's fields (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='patchPresentation_id') Id
+                    .col-sm-10
+                      input#patchPresentation_id(placeholder='')
+                      span.description The Id of the Presentation (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#patchPresentation_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#patchPresentation.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #patchPresentationResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #patchPresentationResultArea.panel-body.result
+            // html elements for core.presentation.publish
+            #publishPresentationSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('publishPresentationSection','listOfFunctions');") Core API
+                  li.active core.presentation.publish
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='publishPresentation_id') Id
+                    .col-sm-10
+                      input#publishPresentation_id(placeholder='')
+                      span.description The Id of the Presentation (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#publishPresentation_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#publishPresentation.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #publishPresentationResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #publishPresentationResultArea.panel-body.result
+            // html elements for core.presentation.restore
+            #restorePresentationSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('restorePresentationSection','listOfFunctions');") Core API
+                  li.active core.presentation.restore
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='restorePresentation_id') Id
+                    .col-sm-10
+                      input#restorePresentation_id(placeholder='')
+                      span.description The Id of the Presentation (String)
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#restorePresentation_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#restorePresentation.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #restorePresentationResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #restorePresentationResultArea.panel-body.result
+            // html elements for core.template.list !
+            #listTemplateSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listTemplateSection','listOfFunctions');") Core API
+                  li.active core.template.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label(for='listTemplate_companyId') Company Id
+                    .col-sm-10
+                      input#listTemplate_companyId(placeholder='')
+                      span.description The Id of the Company (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listTemplate_count') Count
+                    .col-sm-10
+                      input#listTemplate_count(placeholder='')
+                      span.description Max number of results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listTemplate_cursor') Cursor
+                    .col-sm-10
+                      input#listTemplate_cursor(placeholder='')
+                      span.description ?? (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listTemplate_search') Search
+                    .col-sm-10
+                      input#listTemplate_search(placeholder='')
+                      span.description Search query (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listTemplate_sort') Sort
+                    .col-sm-10
+                      input#listTemplate_sort(placeholder='')
+                      span.description Field and direction to sort the results (String)
+                  .form-group
+                    label.col-sm-2.control-label(for='listTemplate_fields') Fields
+                    .col-sm-10
+                      input#listTemplate_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listTemplate.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+                #listTemplateResult
+                  .row.responsePanel
+                    .col-md-12
+                      .panel.panel-default
+                        .panel-heading Response
+                        #listTemplateResultArea.panel-body.result
+            // html elements for core.timezone.list
+            #listTimezoneSection.callSection
+              div
+                ol.breadcrumb
+                  li
+                    a(href="javascript:navigate('listTimezoneSection','listOfFunctions');") Core API
+                  li.active core.timezone.list
+              div
+                form.form-horizontal.form(action='javascript:void(0);')
+                  .form-group
+                    label.col-sm-2.control-label Fields
+                    .col-sm-10
+                      input#listTimezone_fields(placeholder='')
+                      span.description Selector specifying which fields to include in a partial response
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      button#listTimezone.btn.btn-success.btn-fixed-width.has-spinner(type='button')
+                        span.spinner
+                          i.icon-spin.icon-refresh
+                        |                                         Execute 
+                        i.fa.fa-white.fa-check.icon-right
+              #listTimezoneResult
+                .row.responsePanel
+                  .col-md-12
+                    .panel.panel-default
+                      .panel-heading Response
+                      #listTimezoneResultArea.panel-body.result
+
