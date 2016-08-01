@@ -18,7 +18,7 @@
  * @type {string}
  */
 
-var DEV_DOMAIN = "localhost:3000";
+var DEV_DOMAIN = "localhost";
 var STAGE_DOMAIN = "rodrigopavezi.github.io";
 var PROD_DOMAIN = "rise-vision.github.io";
 
