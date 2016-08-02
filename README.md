@@ -25,7 +25,7 @@ Once completed, you can start your app with the following command
 npm start
 ```
 
-Visit http://localhost:3000 to view your app
+Visit http://localhost:8080 to view your app
 
 
 ## Built With
